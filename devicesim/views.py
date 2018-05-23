@@ -44,4 +44,12 @@ def connect(request):
 
         return HttpResponse(status=204)
 
+def check(request):
+
+    if request.method == 'GET':
+
+        return HttpResponse(status=200)
+
+
+
 
