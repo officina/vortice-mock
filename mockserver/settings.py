@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mockserver.urls'
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 TEMPLATES = [
     {

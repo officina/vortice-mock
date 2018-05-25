@@ -5,7 +5,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseNotAllowed
 from django.http import JsonResponse
 import json
-
+import os
+from mockserver.settings import PROJECT_ROOT
 
 
 # Create your views here.
@@ -20,7 +21,21 @@ def register(request):
 
     elif request.method == 'POST':
 
-        return JsonResponse({'serial': 'i8s689sd8f98sdfksdfkhsdf6'})
+        obj = json.loads(request.body.decode('utf8'))
+
+        if obj.get("serial") == None:
+            return HttpResponse("missing serial", status=400 )
+
+        if obj.get("topic") == None:
+            return HttpResponse("missing topic", status=400 )
+
+        if obj.get("certificate") == None:
+            return HttpResponse("missing certifica ", status=400)
+
+
+        #chiamo la lambda e registro il certificato
+
+        return HttpResponse(status=200)
 
 
 
@@ -49,6 +64,10 @@ def check(request):
     if request.method == 'GET':
 
         return HttpResponse(status=200)
+
+    if request.method == 'POST':
+
+        return HttpResponse("Method <b>Get</b> not allowed")
 
 
 
