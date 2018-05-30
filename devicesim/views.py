@@ -40,7 +40,14 @@ def register(request):
 
 
 def hello(request):
-    return JsonResponse({'serial': 'i8s689sd8f98sdfksdfkhsdf6'})
+    return JsonResponse({
+  "model": {
+    "version": "3",
+    "type": "EVO25"
+  },
+  "serial": "1234567890",
+  "firmware": "1.0.2"
+})
 
 def connect(request):
     if request.method == 'GET':
