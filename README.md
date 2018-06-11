@@ -62,7 +62,7 @@ Register to MQTT
     {
       "serial": "1234567890",
       "topic": "asdf",
-      "certificate": "asdf",
+      "certificatePem": "asdf",
       "privateKey": "asdf"
     }
     response code: 204
