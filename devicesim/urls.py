@@ -22,7 +22,7 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('hello', views.hello, name='hello'),
 
-    path('connect', views.connect, name='connect'),
+    path('api/1/wlan/profile_add', views.connect, name='connect'),
     path('check', views.check, name='check'),
     path('', TemplateView.as_view(template_name='index.html'), name='home')
 ]

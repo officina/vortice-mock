@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Response schema",
+  "type": "object",
+  "properties": {
+  "serial": {"type":"string"},
+  "model":
+  {"type":"object"},
+    "properties": {
+    "version": {"type":"string"}
+
+  },
+  "firmware": {"type":"string"}
+  },
+  "additionalProperties":false,
+  "required":["serial", "model", "firmware"]
+}
