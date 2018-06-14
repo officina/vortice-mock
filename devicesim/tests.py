@@ -21,7 +21,8 @@ def _load_json_schema(filename):
     absolute_path = join(dirname(__file__), relative_path)
 
     with open(absolute_path) as schema_file:
-        return json.loads(schema_file.read())
+        j = json.loads(schema_file.read())
+        return j
 
 # Create your tests here.
 class MockTest(TestCase):
@@ -48,7 +49,8 @@ class MockTest(TestCase):
         response = response = self.client.get('/hello')
 
         self.assertEqual(response.status_code, 200, "Status code is not 200")
-        assert_valid_schema(json.loads(response.content), "connect.json")
+        str = response.content
+        assert_valid_schema(json.loads(str), "connect.json")
 
     def test_provisioning_mqtt(self):
         request = HttpRequest()
