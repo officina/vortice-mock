@@ -15,17 +15,55 @@ Per lanciare il server con bonjour:
 
 Metodi: 
 
-Hello (GET)
+Connect to WiFi
 
-    /hello
+    --> POST /connect
     
-    response: {"serial":"asdasdasd"}
+    request body:
+    {
+      "ssid": "Officina_Network",
+      "password": "password"
+    }
+    response code: 204
+    response body: <empty>
     
-    
-Register (POST)
 
-    /register
+Check WiFi status
+
+    --> GET /check
     
-    request: {"serial":"asdasdasd"}
+    request parameters: []
+    response code: 204
+    response body: <empty>
     
-    response: TBD
+
+Hello
+
+    --> GET /hello
+    
+    request parameters: []
+    response code: 200
+    response body:
+    {
+      "serial": "1234567890",
+      "model": {
+        "version": "1",
+        "type": "asdf"
+      },
+      "firmware": "asdf"
+    }
+    
+    
+Register to MQTT
+
+    --> POST /register
+    
+    request body:
+    {
+      "serial": "1234567890",
+      "topic": "asdf",
+      "certificatePem": "asdf",
+      "privateKey": "asdf"
+    }
+    response code: 204
+    response body: <empty>
