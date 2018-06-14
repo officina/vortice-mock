@@ -29,12 +29,13 @@ class MockTest(TestCase):
 
     def test_wifi_provisioning(self):
         request = HttpRequest()
-        data = json.dumps({
+        data = {
           "__SL_P_P.A": "Officina_Network",
           "__SL_P_P.C": "password",
-          "__SL_P_N.L": 2
-        })
-        response = self.client.post('/api/1/wlan/profile_add', content_type='application/json', data=data)
+          "__SL_P_N.L": "2"
+        }
+        data = "__SL_P_P.A=Officina%20Network&__SL_P_P.C=password&__SL_P_N.L=2"
+        response = self.client.post('/api/1/wlan/profile_add', data=data, content_type='application/x-www-form-urlencoded;charset=utf-8')
         self.assertEqual(response.status_code, 204, "Invalid response, expecting 204")
 
     def test_verify_provisioning(self):
