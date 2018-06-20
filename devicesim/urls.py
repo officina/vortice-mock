@@ -21,8 +21,11 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('register', views.register, name='register'),
     path('hello', views.hello, name='hello'),
-
+    path('api/1/wlan/confirm_req', views.provisioning_second_step, name='provisioning_second_step'),
     path('api/1/wlan/profile_add', views.connect, name='connect'),
+    path('param_cfg_result.txt', views.verify_provisioning, name='verify_provisioning'),
     path('check', views.check, name='check'),
-    path('', TemplateView.as_view(template_name='index.html'), name='home')
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('param_device_name.txt', views.set_name, name='name_set'),
+    path('api/1/netapp/set_urn', views.get_name, name='name_get'),
 ]
