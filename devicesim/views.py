@@ -51,29 +51,70 @@ def hello(request):
 
 def connect(request):
     if request.method == 'POST':
-        from urllib.parse import parse_qs
 
-        obj = parse_qs(request.body.decode('utf8'))
-
-
-        if obj.get("__SL_P_P.A") == None:
+        if request.POST["__SL_P_P.A"] == None:
             return HttpResponse("missing  __SL_P_P.A", status=400 )
 
-        if obj["__SL_P_P.C"] == None:
+        if request.POST["__SL_P_P.C"] == None:
             return HttpResponse("missing __SL_P_P.C", status=400)
 
-        if obj["__SL_P_N.L"] == None:
+        if request.POST["__SL_P_N.L"] == None:
             return HttpResponse("missing __SL_P_P.C", status=400)
-        print (obj.get("__SL_P_P.A"))
+
+
     else:
         #chiamo la lambda e registro il certificato
         return method_not_allowed()
 
     return HttpResponse(status=204)
 
+
 def check(request):
 
     if request.method == 'GET':
+
+        return HttpResponse(status=204)
+
+    else:
+        #chiamo la lambda e registro il certificato
+        return method_not_allowed()
+
+
+def verify_provisioning(request):
+
+    if request.method == 'GET':
+
+        return HttpResponse(status=200, content='1')
+
+    else:
+
+        return method_not_allowed()
+
+def provisioning_second_step(request):
+
+    if request.method == 'POST':
+
+
+        return HttpResponse(status=204)
+
+    else:
+        #chiamo la lambda e registro il certificato
+        return method_not_allowed()
+
+def get_name(request):
+
+    if request.method == 'GET':
+
+        return HttpResponse(status=200, content='vorticelloq')
+
+    else:
+
+        return method_not_allowed()
+
+def set_name(request):
+
+    if request.method == 'POST':
+
 
         return HttpResponse(status=204)
 
