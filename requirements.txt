@@ -1,4 +1,5 @@
 coverage==4.5.1
+dj-cmd==1.0.0
 Django==2.0.5
 jsonschema==2.6.0
 pytz==2018.4
